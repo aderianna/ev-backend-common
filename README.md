@@ -1,5 +1,5 @@
 ## Ethervision Backend - Common Library
-[![CircleCI](https://circleci.com/gh/Digital-Mob/ev-backend-common.svg?style=svg)](https://circleci.com/gh/Digital-Mob/ev-backend-common)
+[![CircleCI](https://digital-mob.github.io/ev-backend-common.github.io/img/doc.svg)](https://circleci.com/gh/Digital-Mob/ev-backend-common)
 [![Doc](docs.svg)](doc)
 
 This is a library that is used as a node package that can be installed using npm.
@@ -276,5 +276,5 @@ Whenever you want to handle a connection, channel error on the queue or exchange
 ```
 ... some code
 // This will catch the event one time, you can use 'on' to catch it everytime
-queue.once('closed', (e) => {console.log('error happened throgh this queue: ' + e)});
+queue.once('closed', (e) => { console.log('error happened throgh this queue: ' + e); });
 ```

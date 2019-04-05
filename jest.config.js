@@ -5,7 +5,8 @@ module.exports = {
 	collectCoverageFrom: [
 		"src/**/*.{js,ts}",
 		"!**/node_modules/**",
-		"!**/vendor/**"
+		"!**/vendor/**",
+		"!src/index.ts"
 	],
 	coverageReporters: ["json", "html", "json-summary", "jest-junit", "lcov"]
 };

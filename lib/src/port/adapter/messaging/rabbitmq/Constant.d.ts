@@ -1,4 +1,5 @@
 export default class Constant {
+    static readonly CONSUMER_ERROR: string;
     static readonly INDIVIDUAL_SUBSCRIBER_MUST_HAS_NAME: string;
     static readonly QUEUE_BUILD_THROWS_ERROR: string;
     static readonly FAILED_BINDING_QUEUE_AND_EXCHANGE: string;
