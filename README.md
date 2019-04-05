@@ -1,6 +1,6 @@
 ## Ethervision Backend - Common Library
 [![CircleCI](https://digital-mob.github.io/ev-backend-common.github.io/img/doc.svg)](https://circleci.com/gh/Digital-Mob/ev-backend-common)
-[![Doc](docs.svg)](doc)
+[![Doc](https://digital-mob.github.io/ev-backend-common.github.io/img/doc.svg)](doc)
 
 This is a library that is used as a node package that can be installed using npm.
 
