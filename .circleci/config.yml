@@ -1,0 +1,143 @@
+version: 2.1
+executors:
+  shared_executor: # declares a reusable executor
+    docker:
+    - image: circleci/node:stretch
+    working_directory: ~/app
+
+jobs:
+  checkout-and-install-deps:
+    executor: shared_executor
+    steps:
+    # checkout from source control
+    - restore_cache:
+        keys:
+        - source-{{ .Branch }}-{{ .Revision }}
+    - checkout
+    - save_cache:
+        key: source-{{ .Branch }}-{{ .Revision }}
+        paths:
+        - ".git"
+        - "package.json"
+        - "src"
+        - "test"
+        - "jest.config.js"
+        - ".eslintrc.json"
+        - "tsconfig.json"
+    # npm installation    
+    - restore_cache:
+        keys:
+        - npm-deps-{{ checksum "package.json" }}
+    - run:
+        name: Update npm
+        command: 'sudo npm install -g npm@latest'
+    - run:
+        name: Install npm
+        command: npm install
+    - save_cache:
+        key: npm-deps-{{ checksum "package.json" }}
+        paths:
+        - "node_modules" 
+  check-code-style-and-possible-errors:
+    executor: shared_executor
+    steps:
+    - restore_cache:
+        keys:
+        - source-{{ .Branch }}-{{ .Revision }}
+    - restore_cache:
+        keys:
+        - npm-deps-{{ checksum "package.json" }}
+    - run: 
+        name: Check for possible errors and adhere to the code style
+        command: npm run eslint 
+  test:
+    executor: shared_executor
+    steps:
+    - restore_cache:
+        keys:
+        - source-{{ .Branch }}-{{ .Revision }}
+    - restore_cache:
+        keys:
+        - npm-deps-{{ checksum "package.json" }}    
+    - run:
+        name: Run tests with JUnit as reporter
+        command: yarn jest -- --ci --testResultsProcessor="jest-junit"
+        environment:
+          JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
+    - store_test_results:
+        path: reports/junit
+    - store_artifacts:
+        path: reports/junit
+  generate-doc:
+    executor: shared_executor
+    steps:
+    - restore_cache:
+        keys:
+        - source-{{ .Branch }}-{{ .Revision }}
+    - restore_cache:
+        keys:
+        - npm-deps-{{ checksum "package.json" }}
+    - run:
+        name: Generate code documentation
+        command: npm run generate-code-doc
+    - run:
+        name: Generate code coverage
+        command: npm run generate-code-coverage
+    - run:
+        name: Generate code coverage badge
+        command: npm run generate-code-coverage-badge
+    - save_cache:
+        key: doc-{{ .Branch }}-{{ .Revision }}
+        paths:
+        - "doc"
+        - "node_modules"
+        - "package.json"
+  deploy-doc:
+    executor: shared_executor
+    steps:
+    - restore_cache:
+        keys:
+        - doc-{{ .Branch }}-{{ .Revision }}
+    - run:
+        name: Avoid hosts unknown for github
+        command: mkdir -p ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+    - add_ssh_keys:
+          fingerprints:
+            - "4a:93:fe:57:59:50:62:2c:99:61:bd:ac:e6:03:5b:73"
+    - run:
+        name: Configure git username and email
+        command: |
+            git config --global user.email "arkan.m.gerges@gmail.com"
+            git config --global user.name "arkanmgerges"
+    - run:
+        name: Deploy documentation
+        command: npm run deploy-doc
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - checkout-and-install-deps
+      - check-code-style-and-possible-errors:
+          requires:
+          - checkout-and-install-deps
+          filters:
+            branches:
+              only: master
+      - test:
+          requires:
+          - check-code-style-and-possible-errors
+          filters:
+            branches:
+              only: master
+      - generate-doc:
+          requires:
+          - test
+          filters:
+            branches:
+              only: master
+      - deploy-doc:
+          requires:
+          - generate-doc
+          filters:
+            branches:
+              only: master
