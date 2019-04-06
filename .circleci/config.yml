@@ -109,7 +109,7 @@ jobs:
         name: Configure git username and email
         command: |
             git config --global user.email "arkan.m.gerges@gmail.com"
-            git config --global user.name "arkanmgerges"
+            git config --global user.name "Arkan M. Gerges"
     - run:
         name: Deploy documentation
         command: npm run deploy-doc
