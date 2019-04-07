@@ -145,22 +145,26 @@ import { MessageListener, MessageException } from "ev-backend-common";
 
 
 export default class MyListener extends MessageListener {
-	private name: string;
-	private throwException: boolean;
+	private _name: string;
+	private _throwException: boolean;
 
 	constructor(name: string, throwException: boolean) {
 		super();
-		this.name = name;
-		this.throwException = throwException;
+		this._name = name;
+		this._isThrowException = throwException;
 	}
 
 	handleMessage(msg: Message, ack: (msg: Message) => void) {
 		console.log(`listener ${this.name}: ${msg.content.toString()}`);
-		if (this.throwException) {
+		if (this.isThrowException()) {
 			throw MessageException.instanceWithoutRetry(`listener ${this.name}: throws an exception.`);
 		}
 		ack(msg); // Even if the channel is auto acknoledged, this will not crash it.
 	}
+
+	public isThrowException(): boolean {
+		return this._isThrowException;
+	} 
 }
 
 ```
@@ -276,5 +280,5 @@ Whenever you want to handle a connection, channel error on the queue or exchange
 ```
 ... some code
 // This will catch the event one time, you can use 'on' to catch it everytime
-queue.once('closed', (e) => { console.log('error happened throgh this queue: ' + e); });
+queue.once('closed', (e) => { console.log('error happened through this queue: ' + e); });
 ```
