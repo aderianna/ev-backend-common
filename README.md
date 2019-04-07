@@ -146,7 +146,7 @@ import { MessageListener, MessageException } from "ev-backend-common";
 
 export default class MyListener extends MessageListener {
 	private _name: string;
-	private _throwException: boolean;
+	private _isThrowException: boolean;
 
 	constructor(name: string, throwException: boolean) {
 		super();
