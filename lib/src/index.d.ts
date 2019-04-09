@@ -1,3 +1,4 @@
+/** Adapter */
 import BrokerChannel from './port/adapter/messaging/rabbitmq/BrokerChannel';
 import ConnectionFactory from './port/adapter/messaging/rabbitmq/ConnectionFactory';
 import ConnectionSetting from './port/adapter/messaging/rabbitmq/ConnectionSetting';
@@ -7,4 +8,10 @@ import MessageConsumer from './port/adapter/messaging/rabbitmq/MessageConsumer';
 import MessageException from './port/adapter/messaging/rabbitmq/MessageException';
 import MessageListener from './port/adapter/messaging/rabbitmq/MessageListener';
 import Queue from './port/adapter/messaging/rabbitmq/Queue';
-export { BrokerChannel, ConnectionFactory, ConnectionSetting, Constant, Exchange, MessageConsumer, MessageException, MessageListener, Queue };
+/** Domain event */
+import StoredEvent from './domain/event/StoredEvent';
+/** Domain model */
+import DomainEvent from './domain/model/DomainEvent';
+import DomainEventPublisher from './domain/model/DomainEventPublisher';
+import DomainEventSubscriber from './domain/model/DomainEventSubscriber';
+export { BrokerChannel, ConnectionFactory, ConnectionSetting, Constant, Exchange, MessageConsumer, MessageException, MessageListener, Queue, StoredEvent, DomainEvent, DomainEventPublisher, DomainEventSubscriber };

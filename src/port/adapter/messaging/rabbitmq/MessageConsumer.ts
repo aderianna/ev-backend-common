@@ -6,7 +6,7 @@ import { Message } from "amqplib";
 
 /** I'm using it to display errors, if the specified environment variable 'DEBUG' is set
  * so the provided tag. Here I used 'error'. So if you want to see erros on your console,
- * then just set your environment variable to 'set DEBUG=error'
+ * then just set your environment variable to 'set DEBUG=error'.
  */
 const debugError = require("debug")("error");
 
