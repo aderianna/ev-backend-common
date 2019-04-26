@@ -26,6 +26,17 @@ export default abstract class AbstractId {
 	}
 
 	/**
+	 * Answers the comparison value between mine and other object
+	 * @param object The object that needs to check if it has the same value as mine
+	 */
+	public equals(object: AbstractId): boolean {
+		if ((object != null) && (object != undefined) && (object instanceof AbstractId)) {
+			return object.id() == this.id();
+		}
+		return false;
+	}
+
+	/**
 	 * I will set the id only if it has a valid length.
 	 * @param id The id string that is to be set
 	 */

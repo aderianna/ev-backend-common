@@ -17,6 +17,11 @@ export default abstract class AbstractId {
      */
     id(): string;
     /**
+     * Answers the comparison value between mine and other object
+     * @param object The object that needs to check if it has the same value as mine
+     */
+    equals(object: AbstractId): boolean;
+    /**
      * I will set the id only if it has a valid length.
      * @param id The id string that is to be set
      */

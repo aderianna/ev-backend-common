@@ -30,4 +30,22 @@ describe("Test abstract id", () => {
 
 		expect(() => TestId.generateFrom('')).toThrowError();
 	});
+
+	test('should return true when it has the same value and false otherwise', () => {
+		class TestId extends AbstractId {
+			static generate(): AbstractId {
+				return new this(uuidv1());
+			}
+			static generateFrom(id: string): AbstractId {
+				return new this(id);
+			}
+		}
+
+		let obj1 = TestId.generate();
+		let obj2 = TestId.generate();
+
+		expect(obj1.equals(obj2)).toBeFalsy();
+		expect(obj1.equals(obj1)).toBeTruthy();
+		expect(obj1.equals(null)).toBeFalsy();
+	});
 });
