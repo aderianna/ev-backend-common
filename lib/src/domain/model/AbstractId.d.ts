@@ -25,5 +25,5 @@ export default abstract class AbstractId {
      * I will set the id only if it has a valid length.
      * @param id The id string that is to be set
      */
-    private setId;
+    protected setId(id: string): void;
 }

@@ -40,11 +40,11 @@ export default abstract class AbstractId {
 	 * I will set the id only if it has a valid length.
 	 * @param id The id string that is to be set
 	 */
-	private setId(id: string): void {
+	protected setId(id: string): void {
 		assert.equal(
 			id.length >= 1,
 			true,
-			"id must be a string with lengh >= 1 characters."
+			"id must be a string with lengh >= 1 character(s)."
 		);
 		this._id = id;
 	}

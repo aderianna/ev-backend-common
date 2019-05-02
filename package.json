@@ -1,6 +1,6 @@
 {
   "name": "ev-backend-common",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A common library for backend ethervision application",
   "main": "lib/src/index",
   "types": "lib/src/index.d.ts",
