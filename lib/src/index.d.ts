@@ -14,5 +14,4 @@ import StoredEvent from "./domain/event/StoredEvent";
 import DomainEvent from "./domain/model/DomainEvent";
 import DomainEventPublisher from "./domain/model/DomainEventPublisher";
 import DomainEventSubscriber from "./domain/model/DomainEventSubscriber";
-import AbstractId from "./domain/model/AbstractId";
-export { BrokerChannel, ConnectionFactory, ConnectionSetting, Constant, Exchange, MessageConsumer, MessageException, MessageListener, Queue, StoredEvent, DomainEvent, DomainEventPublisher, DomainEventSubscriber, AbstractId };
+export { BrokerChannel, ConnectionFactory, ConnectionSetting, Constant, Exchange, MessageConsumer, MessageException, MessageListener, Queue, StoredEvent, DomainEvent, DomainEventPublisher, DomainEventSubscriber };

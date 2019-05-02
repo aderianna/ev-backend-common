@@ -16,7 +16,6 @@ import StoredEvent from "./domain/event/StoredEvent";
 import DomainEvent from "./domain/model/DomainEvent";
 import DomainEventPublisher from "./domain/model/DomainEventPublisher";
 import DomainEventSubscriber from "./domain/model/DomainEventSubscriber";
-import AbstractId from "./domain/model/AbstractId";
 
 export {
 	BrokerChannel,
@@ -31,6 +30,5 @@ export {
 	StoredEvent,
 	DomainEvent,
 	DomainEventPublisher,
-	DomainEventSubscriber,
-	AbstractId
+	DomainEventSubscriber
 };
