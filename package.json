@@ -1,52 +1,52 @@
 {
-  "name": "ev-backend-common",
-  "version": "0.4.0",
-  "description": "A common library for backend ethervision application",
-  "main": "lib/src/index",
-  "types": "lib/src/index.d.ts",
-  "scripts": {
-    "build": "npx rimraf lib/* && tsc",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "eslint": "eslint src/**/*.ts",
-    "generate-code-doc": "typedoc --theme node_modules/typedoc-clarity-theme/bin --out doc/code-doc src",
-    "generate-code-coverage": "jest --collect-coverage",
-    "generate-code-coverage-badge": "jest-coverage-badges input doc/code-coverage/coverage-summary.json output doc/code-coverage/badges",
-    "deploy-doc": "gh-pages -d doc -e doc -b master -r git@github.com:Digital-Mob/ev-backend-common.github.io.git"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Digital-Mob/ev-backend-common.git"
-  },
-  "keywords": [],
-  "author": "Arkan M. Gerges <arkan.m.gerges@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Digital-Mob/ev-backend-common/issues"
-  },
-  "homepage": "https://github.com/Digital-Mob/ev-backend-common#readme",
-  "dependencies": {
-    "amqplib": "^0.5.3",
-    "assertion": "^1.3.35",
-    "debug": "^4.1.1",
-    "microtime": "^3.0.0",
-    "supports-color": "^6.1.0",
-    "uuid": "^3.3.2"
-  },
-  "devDependencies": {
-    "@types/amqplib": "^0.5.11",
-    "@types/jest": "^24.0.11",
-    "@typescript-eslint/eslint-plugin": "^1.5.0",
-    "@typescript-eslint/parser": "^1.5.0",
-    "acorn": "^6.0.0",
-    "eslint": "^5.16.0",
-    "gh-pages": "^2.0.1",
-    "jest": "^24.5.0",
-    "jest-coverage-badges": "^1.1.2",
-    "jest-junit": "^6.3.0",
-    "rimraf": "^2.6.3",
-    "ts-jest": "^24.0.0",
-    "typedoc": "^0.14.2",
-    "typedoc-clarity-theme": "^1.1.0"
-  }
+	"name": "ev-backend-common",
+	"version": "0.4.0",
+	"description": "A common library for backend ethervision application",
+	"main": "lib/src/index",
+	"types": "lib/src/index.d.ts",
+	"scripts": {
+		"build": "npx rimraf lib/* && tsc",
+		"test": "jest",
+		"test:watch": "jest --watch",
+		"eslint": "eslint src/**/*.ts",
+		"generate-code-doc": "typedoc --theme node_modules/typedoc-clarity-theme/bin --out doc/code-doc src",
+		"generate-code-coverage": "jest --collect-coverage",
+		"generate-code-coverage-badge": "jest-coverage-badges input doc/code-coverage/coverage-summary.json output doc/code-coverage/badges",
+		"deploy-doc": "gh-pages -d doc -e doc -b master -r git@github.com:arkanmgerges/ev-backend-common.github.io.git"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/arkanmgerges/ev-backend-common.git"
+	},
+	"keywords": [],
+	"author": "Arkan M. Gerges <arkan.m.gerges@gmail.com>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/arkanmgerges/ev-backend-common/issues"
+	},
+	"homepage": "https://github.com/arkanmgerges/ev-backend-common#readme",
+	"dependencies": {
+		"amqplib": "^0.5.3",
+		"assertion": "^1.3.35",
+		"debug": "^4.1.1",
+		"microtime": "^3.0.0",
+		"supports-color": "^6.1.0",
+		"uuid": "^3.3.2"
+	},
+	"devDependencies": {
+		"@types/amqplib": "^0.5.11",
+		"@types/jest": "^24.0.11",
+		"@typescript-eslint/eslint-plugin": "^1.5.0",
+		"@typescript-eslint/parser": "^1.5.0",
+		"acorn": "^6.0.0",
+		"eslint": "^5.16.0",
+		"gh-pages": "^2.0.1",
+		"jest": "^24.5.0",
+		"jest-coverage-badges": "^1.1.2",
+		"jest-junit": "^6.3.0",
+		"rimraf": "^2.6.3",
+		"ts-jest": "^24.0.0",
+		"typedoc": "^0.14.2",
+		"typedoc-clarity-theme": "^1.1.0"
+	}
 }
