@@ -79,14 +79,16 @@ export default class DomainEventPublisher {
 	}
 
 	/**
-	 * This method needs to be implemented in the child class
-	 * @param context The context that is used to commit all the domain events
+	 * Answers the published domain events
 	 */
-	public commit(context): Promise<void> {
-		return new Promise(
-			(r): void => {
-				context != null ? r() : r();
-			}
-		);
+	public domainEvents(): DomainEvent[] {
+		return this._domainEvents;
+	}
+
+	/**
+	 * Clear the domain events
+	 */
+	public clearEvents(): void {
+		this._domainEvents = [];
 	}
 }

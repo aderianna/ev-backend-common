@@ -20,6 +20,7 @@ describe("Test domain event publisher", () => {
 		mockedEventId = jest.fn<string, []>();
 		mockedDomainEvent = new DomainEventTest();
 		mockedDomainEvent.eventId = mockedEventId;
+		DomainEventPublisher.instance().clearEvents();
 		class TestDomainEventSubscriber implements DomainEventSubscriber {
 			handle(domainEvent: DomainEvent): void {
 				domainEvent.eventId();
@@ -55,11 +56,18 @@ describe("Test domain event publisher", () => {
 		expect(domainEventPublisher.ofId(index)).toBe(null);
 	});
 
-	test("should return a promise when calling commit", async () => {
-		let fn = jest.fn();
+	test("should publish event and verify that it exists", () => {
 		let domainEventPublisher = DomainEventPublisher.instance();
-		domainEventPublisher.commit = () => fn();
-		await domainEventPublisher.commit(true);
-		expect(fn).toBeCalled();
+		domainEventPublisher.publish(mockedDomainEvent);
+		expect(domainEventPublisher.domainEvents()[0]).toBe(mockedDomainEvent);
+		expect(domainEventPublisher.domainEvents().length).toEqual(1);
+	});
+
+	test("should publish event, clear it then to verify that it exists", () => {
+		let domainEventPublisher = DomainEventPublisher.instance();
+		domainEventPublisher.publish(mockedDomainEvent);
+		expect(domainEventPublisher.domainEvents().length).toEqual(1);
+		domainEventPublisher.clearEvents();
+		expect(domainEventPublisher.domainEvents().length).toEqual(0);
 	});
 });
