@@ -88,7 +88,7 @@ export default class DomainEventPublisher {
 	/**
 	 * Clear the domain events
 	 */
-	public clearEvents(): void {
+	public clearDomainEvents(): void {
 		this._domainEvents = [];
 	}
 }

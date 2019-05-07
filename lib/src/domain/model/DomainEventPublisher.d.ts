@@ -48,5 +48,5 @@ export default class DomainEventPublisher {
     /**
      * Clear the domain events
      */
-    clearEvents(): void;
+    clearDomainEvents(): void;
 }

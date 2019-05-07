@@ -20,7 +20,7 @@ describe("Test domain event publisher", () => {
 		mockedEventId = jest.fn<string, []>();
 		mockedDomainEvent = new DomainEventTest();
 		mockedDomainEvent.eventId = mockedEventId;
-		DomainEventPublisher.instance().clearEvents();
+		DomainEventPublisher.instance().clearDomainEvents();
 		class TestDomainEventSubscriber implements DomainEventSubscriber {
 			handle(domainEvent: DomainEvent): void {
 				domainEvent.eventId();
@@ -67,7 +67,7 @@ describe("Test domain event publisher", () => {
 		let domainEventPublisher = DomainEventPublisher.instance();
 		domainEventPublisher.publish(mockedDomainEvent);
 		expect(domainEventPublisher.domainEvents().length).toEqual(1);
-		domainEventPublisher.clearEvents();
+		domainEventPublisher.clearDomainEvents();
 		expect(domainEventPublisher.domainEvents().length).toEqual(0);
 	});
 });
