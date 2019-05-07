@@ -18,13 +18,10 @@ export default class StoredEvent implements DomainEvent {
 	private _eventName: string;
 	/** Answers the aggregate id, which is the one that published the domain event, or empty string otherwise */
 	private _aggregateId: string;
-	/** The originator app who emitted this event */
-	private _appId: string;
 
 	/**
 	 * Construct myself
 	 *
-	 * @param appId The originator app that emitted the event
 	 * @param eventName The class or type of the event
 	 * @param occurredOn The date when the event has occurred
 	 * @param eventVersion The version of the event
@@ -33,7 +30,6 @@ export default class StoredEvent implements DomainEvent {
 	 */
 	public constructor(
 		eventId: string,
-		appId: string,
 		eventName: string,
 		occurredOn: number,
 		eventVersion: number,
@@ -41,7 +37,6 @@ export default class StoredEvent implements DomainEvent {
 		aggregateId: string
 	) {
 		this._eventId = eventId;
-		this._appId = appId;
 		this._eventName = eventName;
 		this._occurredOn = occurredOn;
 		this._eventVersion = eventVersion;
@@ -96,12 +91,5 @@ export default class StoredEvent implements DomainEvent {
 	 */
 	public aggregateId(): string {
 		return this._aggregateId;
-	}
-
-	/**
-	 * Answers the application that emitted me
-	 */
-	public appId(): string {
-		return this._appId;
 	}
 }

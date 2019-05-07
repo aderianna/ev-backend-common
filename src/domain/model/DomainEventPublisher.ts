@@ -11,7 +11,9 @@ export default class DomainEventPublisher {
 	/** An index of the current subscriber. */
 	private _id: number = 0;
 	/** A list of subscribers. */
-	private _subscribers: DomainEventSubscriber[];
+	private _subscribers: DomainEventSubscriber[] = [];
+	/** Keep domain events */
+	protected _domainEvents: DomainEvent[] = [];
 	/** A single instance of me */
 	private static _instance: DomainEventPublisher = null;
 
@@ -43,7 +45,7 @@ export default class DomainEventPublisher {
 	}
 
 	/**
-	 * Return a domain event subscriber by index 
+	 * Return a domain event subscriber by index
 	 * @param id The index of the subscriber
 	 */
 	public ofId(id: number): DomainEventSubscriber | null {
@@ -66,10 +68,25 @@ export default class DomainEventPublisher {
 	 * @param domainEvent The domain event that needs to be handled through a domain event subscriber
 	 */
 	public publish(domainEvent: DomainEvent): void {
-		this._subscribers.forEach((aSubscriber: DomainEventSubscriber): void => {
-			if (aSubscriber.isSubscribedTo(domainEvent)) {
-				aSubscriber.handle(domainEvent);
+		this._domainEvents.push(domainEvent);
+		this._subscribers.forEach(
+			(aSubscriber: DomainEventSubscriber): void => {
+				if (aSubscriber.isSubscribedTo(domainEvent)) {
+					aSubscriber.handle(domainEvent);
+				}
 			}
-		});
+		);
+	}
+
+	/**
+	 * This method needs to be implemented in the child class
+	 * @param context The context that is used to commit all the domain events
+	 */
+	public commit(context): Promise<void> {
+		return new Promise(
+			(r): void => {
+				context != null ? r() : r();
+			}
+		);
 	}
 }

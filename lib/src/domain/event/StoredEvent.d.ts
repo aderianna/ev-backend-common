@@ -17,19 +17,16 @@ export default class StoredEvent implements DomainEvent {
     private _eventName;
     /** Answers the aggregate id, which is the one that published the domain event, or empty string otherwise */
     private _aggregateId;
-    /** The originator app who emitted this event */
-    private _appId;
     /**
      * Construct myself
      *
-     * @param appId The originator app that emitted the event
      * @param eventName The class or type of the event
      * @param occurredOn The date when the event has occurred
      * @param eventVersion The version of the event
      * @param eventData The data of the event
      * @param aggregateId The string id of the aggregate, empty string otherwise
      */
-    constructor(eventId: string, appId: string, eventName: string, occurredOn: number, eventVersion: number, eventData: string, aggregateId: string);
+    constructor(eventId: string, eventName: string, occurredOn: number, eventVersion: number, eventData: string, aggregateId: string);
     /**
      * Answers my event data
      */
@@ -58,8 +55,4 @@ export default class StoredEvent implements DomainEvent {
      * Answers the aggregate id that published this event, empty string otherwise
      */
     aggregateId(): string;
-    /**
-     * Answers the application that emitted me
-     */
-    appId(): string;
 }

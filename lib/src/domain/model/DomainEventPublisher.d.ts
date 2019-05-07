@@ -11,6 +11,8 @@ export default class DomainEventPublisher {
     private _id;
     /** A list of subscribers. */
     private _subscribers;
+    /** Keep domain events */
+    protected _domainEvents: DomainEvent[];
     /** A single instance of me */
     private static _instance;
     /** Initialize one instance of me */
@@ -39,4 +41,9 @@ export default class DomainEventPublisher {
      * @param domainEvent The domain event that needs to be handled through a domain event subscriber
      */
     publish(domainEvent: DomainEvent): void;
+    /**
+     * This method needs to be implemented in the child class
+     * @param context The context that is used to commit all the domain events
+     */
+    commit(context: any): Promise<void>;
 }
