@@ -6,20 +6,21 @@
  */
 interface DomainEvent {
 	/**
-	 * The unique id of the event
+	 * Answers the unique id of the event
 	 */
 	eventId(): string;
-	/** A domain event version that will need to recognize
+
+	/** Answers the domain event version that will need to recognize
 	 * different versions of the domain event.
 	 */
 	eventVersion(): number;
-	/** The time when this event happened. */
+
+	/** Answers the time when this event happened. */
 	occurredOn(): number;
 
 	/** Answers the name of the event */
 	eventName(): string;
-	/** Answers the data of this domain event represented in this string */
-	eventData(): string;
+
 	/** Answers the aggregate id, which is the one that published the domain event, or empty string otherwise */
 	aggregateId(): string;
 }
