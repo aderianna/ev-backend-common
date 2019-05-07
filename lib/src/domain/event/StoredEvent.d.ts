@@ -9,24 +9,27 @@ export default class StoredEvent implements DomainEvent {
     private _eventVersion;
     /** The unique id of the event. */
     private _eventId;
-    /** The body data of the event. */
-    private _eventBody;
+    /** The data of the event. */
+    private _eventData;
     /** When the event happened. */
     private _occurredOn;
     /** The class or type of this event. */
-    private _typeName;
+    private _eventName;
+    /** Answers the aggregate id, which is the one that published the domain event, or empty string otherwise */
+    private _aggregateId;
     /** The originator app who emitted this event */
     private _appId;
     /**
      * Construct myself
      *
      * @param appId The originator app that emitted the event
-     * @param typeName The class or type of the event
+     * @param eventName The class or type of the event
      * @param occurredOn The date when the event has occurred
-     * @param version The version of the event
-     * @param eventBody The data of the event
+     * @param eventVersion The version of the event
+     * @param eventData The data of the event
+     * @param aggregateId The string id of the aggregate, empty string otherwise
      */
-    constructor(eventId: string, appId: string, typeName: string, occurredOn: number, version: number, eventBody: string);
+    constructor(eventId: string, appId: string, eventName: string, occurredOn: number, eventVersion: number, eventData: string, aggregateId: string);
     /**
      * Answers my event data
      */
@@ -36,9 +39,9 @@ export default class StoredEvent implements DomainEvent {
      */
     eventId(): string;
     /**
-     * Answers my type
+     * Answers my event name
      */
-    typeName(): string;
+    eventName(): string;
     /**
      * Answers the time when I occurred
      */
@@ -47,6 +50,14 @@ export default class StoredEvent implements DomainEvent {
      * Answers my event version
      */
     eventVersion(): number;
+    /**
+     * Answers my event data
+     */
+    eventData(): string;
+    /**
+     * Answers the aggregate id that published this event, empty string otherwise
+     */
+    aggregateId(): string;
     /**
      * Answers the application that emitted me
      */

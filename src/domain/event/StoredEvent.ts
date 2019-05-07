@@ -2,7 +2,7 @@ import DomainEvent from "../model/DomainEvent";
 
 /**
  * I am a stored event that represent a persisted event.
- * 
+ *
  * @author Arkan M. Gerges <arkan.m.gerges@gmail.com>
  */
 export default class StoredEvent implements DomainEvent {
@@ -10,39 +10,50 @@ export default class StoredEvent implements DomainEvent {
 	private _eventVersion: number;
 	/** The unique id of the event. */
 	private _eventId: string;
-	/** The body data of the event. */
-	private _eventBody: string;
+	/** The data of the event. */
+	private _eventData: string;
 	/** When the event happened. */
 	private _occurredOn: number;
 	/** The class or type of this event. */
-	private _typeName: string;
+	private _eventName: string;
+	/** Answers the aggregate id, which is the one that published the domain event, or empty string otherwise */
+	private _aggregateId: string;
 	/** The originator app who emitted this event */
 	private _appId: string;
 
 	/**
 	 * Construct myself
-	 * 
+	 *
 	 * @param appId The originator app that emitted the event
-	 * @param typeName The class or type of the event
+	 * @param eventName The class or type of the event
 	 * @param occurredOn The date when the event has occurred
-	 * @param version The version of the event
-	 * @param eventBody The data of the event
+	 * @param eventVersion The version of the event
+	 * @param eventData The data of the event
+	 * @param aggregateId The string id of the aggregate, empty string otherwise
 	 */
-	public constructor(eventId: string, appId: string, typeName: string, occurredOn: number,
-		version: number, eventBody: string) {
+	public constructor(
+		eventId: string,
+		appId: string,
+		eventName: string,
+		occurredOn: number,
+		eventVersion: number,
+		eventData: string,
+		aggregateId: string
+	) {
 		this._eventId = eventId;
 		this._appId = appId;
-		this._typeName = typeName;
+		this._eventName = eventName;
 		this._occurredOn = occurredOn;
-		this._eventVersion = version;
-		this._eventBody = eventBody;
+		this._eventVersion = eventVersion;
+		this._eventData = eventData;
+		this._aggregateId = aggregateId;
 	}
 
 	/**
 	 * Answers my event data
 	 */
 	public eventBody(): string {
-		return this._eventBody;
+		return this._eventData;
 	}
 
 	/**
@@ -53,10 +64,10 @@ export default class StoredEvent implements DomainEvent {
 	}
 
 	/**
-	 * Answers my type
+	 * Answers my event name
 	 */
-	public typeName(): string {
-		return this._typeName;
+	public eventName(): string {
+		return this._eventName;
 	}
 
 	/**
@@ -71,6 +82,20 @@ export default class StoredEvent implements DomainEvent {
 	 */
 	public eventVersion(): number {
 		return this._eventVersion;
+	}
+
+	/**
+	 * Answers my event data
+	 */
+	public eventData(): string {
+		return this._eventData;
+	}
+
+	/**
+	 * Answers the aggregate id that published this event, empty string otherwise
+	 */
+	public aggregateId(): string {
+		return this._aggregateId;
 	}
 
 	/**

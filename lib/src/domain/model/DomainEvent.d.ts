@@ -15,5 +15,11 @@ interface DomainEvent {
     eventVersion(): number;
     /** The time when this event happened. */
     occurredOn(): number;
+    /** Answers the name of the event */
+    eventName(): string;
+    /** Answers the data of this domain event represented in this string */
+    eventData(): string;
+    /** Answers the aggregate id, which is the one that published the domain event, or empty string otherwise */
+    aggregateId(): string;
 }
 export default DomainEvent;
