@@ -104,7 +104,7 @@ jobs:
         command: mkdir -p ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
     - add_ssh_keys:
           fingerprints:
-            - "44:c4:58:2f:48:68:68:91:9f:88:92:f8:5e:9f:84:45"
+            - "4a:93:fe:57:59:50:62:2c:99:61:bd:ac:e6:03:5b:73"
     - run:
         name: Configure git username and email
         command: |
