@@ -27,7 +27,7 @@ export default class DomainEventPublisher {
 	}
 
 	/** I can not be initialized publically through 'new' keyword */
-	private constructor() {
+	protected constructor() {
 		this._subscribers = [];
 	}
 

@@ -18,7 +18,7 @@ export default class DomainEventPublisher {
     /** Initialize one instance of me */
     static instance(): DomainEventPublisher;
     /** I can not be initialized publically through 'new' keyword */
-    private constructor();
+    protected constructor();
     /**
      * Add a domain event subscriber to the list
      * @param domainEventSubscriber The subscriber that needs to be added in the subscribers list

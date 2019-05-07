@@ -54,4 +54,12 @@ describe("Test domain event publisher", () => {
 		domainEventPublisher.unsubscribe(index);
 		expect(domainEventPublisher.ofId(index)).toBe(null);
 	});
+
+	test("should return a promise when calling commit", async () => {
+		let fn = jest.fn();
+		let domainEventPublisher = DomainEventPublisher.instance();
+		domainEventPublisher.commit = () => fn();
+		await domainEventPublisher.commit(true);
+		expect(fn).toBeCalled();
+	});
 });
