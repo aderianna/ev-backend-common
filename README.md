@@ -1,6 +1,6 @@
 ## Ethervision Backend - Common Library
-[![CircleCI](https://circleci.com/gh/arkanmgerges/ev-backend-common.svg?style=svg)](https://circleci.com/gh/arkanmgerges/ev-backend-common)
-[![Doc](https://arkanmgerges.github.io/ev-backend-common.github.io/img/doc.svg)](https://arkanmgerges.github.io/ev-backend-common.github.io/doc/code-doc/index.html)
+[![CircleCI](https://circleci.com/gh/Digital-Mob/ev-backend-common.svg?style=svg)](https://circleci.com/gh/Digital-Mob/ev-backend-common)
+[![Doc](https://Digital-Mob.github.io/ev-backend-common.github.io/img/doc.svg)](https://Digital-Mob.github.io/ev-backend-common.github.io/doc/code-doc/index.html)
 
 This is a library that is used as a node package that can be installed using npm.
 
@@ -13,11 +13,11 @@ This library is a common library that is can be used by different projects, it h
 And much more.
 
 ## Code documentation
-In order to learn more about the code classes and their methods you can visit [code doc](https://arkanmgerges.github.io/ev-backend-common.github.io/doc/code-doc/index.html)
+In order to learn more about the code classes and their methods you can visit [code doc](https://Digital-Mob.github.io/ev-backend-common.github.io/doc/code-doc/index.html)
 
 ## Installation
 You can install this library using git url:
-```npm i -S https://github.com/arkanmgerges/ev-backend-common.git```
+```npm i -S https://github.com/Digital-Mob/ev-backend-common.git```
 
 Also you need to have ```ts-node``` installed and that you can run typescript code
 

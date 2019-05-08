@@ -12,19 +12,19 @@
 		"generate-code-doc": "typedoc --theme node_modules/typedoc-clarity-theme/bin --out doc/code-doc src",
 		"generate-code-coverage": "jest --collect-coverage",
 		"generate-code-coverage-badge": "jest-coverage-badges input doc/code-coverage/coverage-summary.json output doc/code-coverage/badges",
-		"deploy-doc": "gh-pages -d doc -e doc -b master -r git@github.com:arkanmgerges/ev-backend-common.github.io.git"
+		"deploy-doc": "gh-pages -d doc -e doc -b master -r git@github.com:Digital-Mob/ev-backend-common.github.io.git"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/arkanmgerges/ev-backend-common.git"
+		"url": "git+https://github.com/Digital-Mob/ev-backend-common.git"
 	},
 	"keywords": [],
 	"author": "Arkan M. Gerges <arkan.m.gerges@gmail.com>",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/arkanmgerges/ev-backend-common/issues"
+		"url": "https://github.com/Digital-Mob/ev-backend-common/issues"
 	},
-	"homepage": "https://github.com/arkanmgerges/ev-backend-common#readme",
+	"homepage": "https://github.com/Digital-Mob/ev-backend-common#readme",
 	"dependencies": {
 		"amqplib": "^0.5.3",
 		"assertion": "^1.3.35",
