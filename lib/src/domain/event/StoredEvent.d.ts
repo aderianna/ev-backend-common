@@ -28,10 +28,6 @@ export default class StoredEvent implements DomainEvent {
      */
     constructor(eventId: string, eventName: string, occurredOn: number, eventVersion: number, eventData: string, aggregateId: string);
     /**
-     * Answers my event data
-     */
-    eventBody(): string;
-    /**
      * Answers my event unique id
      */
     eventId(): string;

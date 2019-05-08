@@ -45,13 +45,6 @@ export default class StoredEvent implements DomainEvent {
 	}
 
 	/**
-	 * Answers my event data
-	 */
-	public eventBody(): string {
-		return this._eventData;
-	}
-
-	/**
 	 * Answers my event unique id
 	 */
 	public eventId(): string {
