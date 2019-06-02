@@ -23,6 +23,9 @@ interface DomainEvent {
 
 	/** Answers the aggregate id, which is the one that published the domain event, or empty string otherwise */
 	aggregateId(): string;
+
+	/** The data of the event. */
+	eventData(): string;
 }
 
 export default DomainEvent;

@@ -3,4 +3,4 @@ doc/
 docker/**/data/*
 !docker/**/data/.gitkeep
 node_modules
-
+.idea
