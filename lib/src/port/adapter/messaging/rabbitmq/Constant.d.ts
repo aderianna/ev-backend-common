@@ -8,6 +8,7 @@ export default class Constant {
     static readonly MESSAGE_CONSUMER_ERROR_EVENT_NAME: string;
     static readonly CLOSED_EVENT_NAME: string;
     static readonly ERROR_EVENT_NAME: string;
+    static readonly CLOSE_EVENT_NAME: string;
     static readonly CHANNEL_CONSUME_ERROR: string;
     static readonly MESSAGE_EQUALIZATION_FAILED: string;
     static readonly EXCHANGE_BUILD_THROWS_ERROR: string;

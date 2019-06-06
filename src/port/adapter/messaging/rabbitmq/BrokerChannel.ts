@@ -100,6 +100,14 @@ export default abstract class BrokerChannel extends events.EventEmitter {
 						(conn): void => {
 							this.setConnection(conn);
 							conn.once(
+								Constant.CLOSE_EVENT_NAME,
+								(e): void => {
+									debugError(e);
+									this.setConnection(null);
+									this.emit(Constant.CLOSED_EVENT_NAME);
+								}
+							);
+							conn.once(
 								Constant.ERROR_EVENT_NAME,
 								(e): void => {
 									debugError(e);

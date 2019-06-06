@@ -103,6 +103,36 @@ describe("Test customInstanceUsingConnectionSetting()", () => {
 		expect(mockedFn).toBeCalledTimes(1);
 	});
 
+	test("should execute connection.once('close', fn) whenever a 'close' event happened on the connection", async done => {
+		expect.hasAssertions();
+
+		amqpLib.connect = jest.fn().mockResolvedValue(mockedConnection);
+		let connSetting = ConnectionSetting.instance(
+			"localhost",
+			1234,
+			"virt",
+			"user",
+			"pass"
+		);
+
+		let q = await Queue.customInstanceUsingConnectionSetting(
+			connSetting,
+			queueName,
+			true,
+			false,
+			false
+		);
+		let mockedFn = jest.fn();
+
+		q.once("closed", () => {
+			mockedFn();
+			done();
+		});
+
+		mockedConnection.emit("close");
+		expect(mockedFn).toBeCalledTimes(1);
+	});
+
 	test("should execute channel.once('error', fn) whenever an error on the channel occurred", async done => {
 		expect.hasAssertions();
 

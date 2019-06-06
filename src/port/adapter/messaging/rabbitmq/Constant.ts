@@ -14,6 +14,7 @@ export default class Constant {
 		"messageConsumerError";
 	public static readonly CLOSED_EVENT_NAME: string = "closed";
 	public static readonly ERROR_EVENT_NAME: string = "error";
+	public static readonly CLOSE_EVENT_NAME: string = "close";
 	public static readonly CHANNEL_CONSUME_ERROR: string =
 		"channel.consume() throws an error: ";
 	public static readonly MESSAGE_EQUALIZATION_FAILED: string =
