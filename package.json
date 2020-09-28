@@ -46,7 +46,7 @@
 		"jest-junit": "^6.3.0",
 		"rimraf": "^2.6.3",
 		"ts-jest": "^24.0.0",
-		"typedoc": "^0.14.2",
+		"typedoc": "^0.16.11",
 		"typedoc-clarity-theme": "^1.1.0"
 	}
 }
